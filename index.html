@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harmonograph</title>
+    <meta
+      name="description"
+      content="Harmonograph and Lissajous figures: see the musical intervals as the pendulum drawings of Victorian parlours. Pick a ratio (octave, fifth, fourth...), tune the phase and damping, draw it, hear it, and download it as SVG or PNG. Free, works offline."
+    />
+    <meta name="author" content="Olivier Giulieri" />
+    <link rel="canonical" href="https://evoluteur.github.io/harmonograph/" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <meta name="theme-color" content="#1a212d" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link id="omg-core-css" rel="stylesheet" href="css/core.css" />
+    <link id="omg-theme-css" rel="stylesheet" href="css/themes/dark/dark.css" />
+    <link id="omg-density-css" rel="stylesheet" href="css/densities.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/harmonograph.css" />
+
+    <script src="js/omg.js"></script>
+        <script src="js/harmonograph.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        addEventListener("load", () =>
+          navigator.serviceWorker.register("sw.js"),
+        );
+      }
+    </script>
+  </head>
+
+  <body
+    onload="
+      setupPage('home');
+      initHarmonograph();
+    "
+    id="omg-body"
+  >
+    <div id="omg-header">
+      <h1>Harmonograph</h1>
+      <div id="omg-header-tools">
+        <div id="omg-theme-picker"></div>
+        <a
+          id="omg-github"
+          href="https://github.com/evoluteur/harmonograph"
+          target="_blank"
+          rel="noopener"
+          title="Harmonograph on GitHub"
+          aria-label="Harmonograph on GitHub"
+          ><svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            /></svg
+        ></a>
+      </div>
+    </div>
+    <noscript
+      ><p class="tagline">
+        Harmonograph draws in the browser, so it needs JavaScript. Enable it
+        to draw, or read <a href="about.html">about harmonographs</a>.
+      </p></noscript
+    >
+    <h2>Musical intervals, drawn by pendulums</h2>
+    <div class="content">
+      <p class="tagline">
+        Two pendulums swinging at right angles, with a pen between them, draw
+        the ratio of their speeds. Simple ratios, the same ones that sound
+        consonant in music, make simple and beautiful figures. Pick an
+        interval, set the pendulums swinging, watch the pen draw, and listen
+        to it. Curious? Read <a href="about.html">about harmonographs</a>.
+      </p>
+
+      <div class="layout">
+        <div class="stage">
+          <div id="figure-box" class="canvas-box"></div>
+          <p class="note" id="ratio-note" aria-live="polite"></p>
+        </div>
+
+        <div class="side">
+          <div class="panel">
+            <h3>Interval</h3>
+            <div
+              class="chips"
+              id="mode-chips"
+              role="group"
+              aria-label="Kind of figure"
+            ></div>
+            <div
+              class="chips"
+              id="interval-chips"
+              role="group"
+              aria-label="Musical intervals"
+            ></div>
+            <div class="ctl">
+              <label for="a">Left–right pendulum</label
+              ><span class="val" id="a-val"></span>
+              <input type="range" id="a" min="1" max="12" step="1" />
+            </div>
+            <div class="ctl">
+              <label for="b">Up–down pendulum</label
+              ><span class="val" id="b-val"></span>
+              <input type="range" id="b" min="1" max="12" step="1" />
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Pendulums</h3>
+            <div class="ctl">
+              <label for="phase">Phase</label
+              ><span class="val" id="phase-val"></span>
+              <input type="range" id="phase" min="0" max="360" step="1" />
+            </div>
+            <div class="ctl">
+              <label for="detune">Detune</label
+              ><span class="val" id="detune-val"></span>
+              <input type="range" id="detune" min="0" max="3" step="0.1" />
+            </div>
+            <div class="ctl h-only">
+              <label for="damping">Damping</label
+              ><span class="val" id="damping-val"></span>
+              <input type="range" id="damping" min="0" max="1" step="0.01" />
+            </div>
+            <div class="ctl h-only">
+              <label for="rotary">Rotary pendulum</label
+              ><span class="val" id="rotary-val"></span>
+              <input type="range" id="rotary" min="0" max="1" step="0.01" />
+            </div>
+            <div class="ctl h-only">
+              <label for="rotFreq">Rotary speed</label
+              ><span class="val" id="rotFreq-val"></span>
+              <input type="range" id="rotFreq" min="0.25" max="3" step="0.25" />
+            </div>
+            <div class="ctl h-only">
+              <label for="duration">Swing time</label
+              ><span class="val" id="duration-val"></span>
+              <input type="range" id="duration" min="10" max="120" step="1" />
+            </div>
+            <div class="btns">
+              <button type="button" id="random" class="ghost">Surprise me</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Watch and listen</h3>
+            <div class="btns">
+              <button type="button" id="draw">Draw it</button>
+              <button type="button" id="spin" class="ghost">Turn the phase</button>
+              <button type="button" id="listen" class="ghost" aria-pressed="false">Listen</button>
+            </div>
+            <div class="ctl" style="margin-top: 12px">
+              <label for="tone">Base tone</label
+              ><span class="val" id="tone-val"></span>
+              <input type="range" id="tone" min="110" max="440" step="1" />
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Look and save</h3>
+            <div
+              class="chips"
+              id="look-chips"
+              role="group"
+              aria-label="Colors"
+            ></div>
+            <div class="ctl">
+              <label for="width">Line width</label
+              ><span class="val" id="width-val"></span>
+              <input type="range" id="width" min="0.3" max="3" step="0.1" />
+            </div>
+            <div class="btns">
+              <button type="button" id="export-png">Download PNG</button>
+              <button type="button" id="export-svg" class="ghost">
+                Download SVG
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layout info">
+        <div class="side wide">
+          <div class="panel">
+            <h3>Seeing consonance</h3>
+            <p class="note">
+              When two pendulums swing in a simple ratio, like 2:3 for a
+              fifth, the pen comes back to where it started after a few
+              swings and the figure closes on itself. The simpler the ratio,
+              the simpler the figure, just as the simplest ratios sound the
+              most consonant. Detune one pendulum slightly and the figure
+              slowly turns, the way two nearly matched notes beat.
+            </p>
+          </div>
+        </div>
+        <div class="side wide">
+          <div class="panel">
+            <h3>Lissajous and harmonograph</h3>
+            <p class="note">
+              A Lissajous figure is the ideal case: pendulums that never slow
+              down, so the pen runs around the same closed curve forever. A
+              real harmonograph's pendulums lose energy, so the figure spirals
+              in toward the center. A third, rotary pendulum moving the paper
+              in a circle adds the loops and rosettes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p><a href="about.html">About harmonographs</a></p>
+        <p>
+          The code of this page is
+          <a href="https://github.com/evoluteur/harmonograph">Open source</a>
+          with MIT license.
+        </p>
+        <p>
+          Had fun browsing the app?
+          <a href="https://github.com/sponsors/evoluteur"
+            >Buy me a coffee by becoming a sponsor</a
+          >.
+        </p>
+        <p>
+          You may also like
+          <a
+            href="https://evoluteur.github.io/music-of-the-spheres/"
+            target="_blank"
+            rel="noopener"
+            >Music of the Spheres</a
+          >,
+          <a
+            href="https://evoluteur.github.io/cymatics/"
+            target="_blank"
+            rel="noopener"
+            >Cymatics</a
+          >, and
+          <a
+            href="https://evoluteur.github.io/sacred-geometry/"
+            target="_blank"
+            rel="noopener"
+            >Sacred Geometry</a
+          >. See them all on
+          <a
+            href="https://evoluteur.github.io/esoterica.html"
+            target="_blank"
+            rel="noopener"
+            >Esoterica</a
+          >.
+        </p>
+        <p class="copyright">
+          &#169; 2026
+          <a href="https://evoluteur.github.io/">Olivier Giulieri</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

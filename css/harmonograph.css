@@ -1,0 +1,48 @@
+.canvas-box {
+  background-color: var(--card-bg);
+  border: 3px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+  line-height: 0;
+}
+.canvas-box svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.canvas-box svg:hover {
+  fill: none;
+}
+.stage > .note {
+  margin: 10px 2px 0;
+  min-height: 1.4em;
+}
+.layout.info {
+  margin-top: 0;
+}
+.side.wide {
+  flex: 1 1 340px;
+  max-width: 560px;
+}
+#interval-chips button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
+/* the damping, rotary pendulum and swing time only apply to the harmonograph */
+body.is-lissajous .h-only {
+  display: none;
+}
+
+/* evol-blue theme: the drawing keeps its own background, so give the
+   frame the card color like the panels */
+html:has(#omg-theme-css[href*="evol-blue"]) .canvas-box {
+  background-color: var(--card-bg);
+}
+
+/* keep the title clear of the theme toggle and GitHub link on phones */
+@media only screen and (max-width: 560px) {
+  #omg-header h1 {
+    padding-right: 205px;
+    font-size: 1.4rem;
+  }
+}
