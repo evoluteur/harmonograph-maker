@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harmonograph</title>
+    <title>Harmonograph Maker</title>
     <meta
       name="description"
       content="Harmonograph and Lissajous figures: see the musical intervals as the pendulum drawings of Victorian parlours. Pick a ratio (octave, fifth, fourth...), tune the phase and damping, draw it, hear it, and download it as SVG or PNG. Free, works offline."
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/harmonograph.css" />
 
     <script src="js/omg.js"></script>
-        <script src="js/harmonograph.js"></script>
+    <script src="js/harmonograph.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
         addEventListener("load", () =>
@@ -44,12 +44,12 @@
     id="omg-body"
   >
     <div id="omg-header">
-      <h1>Harmonograph</h1>
+      <h1>Harmonograph Maker</h1>
       <div id="omg-header-tools">
         <div id="omg-theme-picker"></div>
         <a
           id="omg-github"
-          href="https://github.com/evoluteur/harmonograph"
+          href="https://github.com/evoluteur/harmonograph-maker"
           target="_blank"
           rel="noopener"
           title="Harmonograph on GitHub"
@@ -63,8 +63,8 @@
     </div>
     <noscript
       ><p class="tagline">
-        Harmonograph draws in the browser, so it needs JavaScript. Enable it
-        to draw, or read <a href="about.html">about harmonographs</a>.
+        Harmonograph draws in the browser, so it needs JavaScript. Enable it to
+        draw, or read <a href="about.html">about harmonographs</a>.
       </p></noscript
     >
     <h2>Musical intervals, drawn by pendulums</h2>
@@ -72,9 +72,9 @@
       <p class="tagline">
         Two pendulums swinging at right angles, with a pen between them, draw
         the ratio of their speeds. Simple ratios, the same ones that sound
-        consonant in music, make simple and beautiful figures. Pick an
-        interval, set the pendulums swinging, watch the pen draw, and listen
-        to it. Curious? Read <a href="about.html">about harmonographs</a>.
+        consonant in music, make simple and beautiful figures. Pick an interval,
+        set the pendulums swinging, watch the pen draw, and listen to it.
+        Curious? Read <a href="about.html">about harmonographs</a>.
       </p>
 
       <div class="layout">
@@ -143,7 +143,9 @@
               <input type="range" id="duration" min="10" max="120" step="1" />
             </div>
             <div class="btns">
-              <button type="button" id="random" class="ghost">Surprise me</button>
+              <button type="button" id="random" class="ghost">
+                Surprise me
+              </button>
             </div>
           </div>
 
@@ -151,8 +153,17 @@
             <h3>Watch and listen</h3>
             <div class="btns">
               <button type="button" id="draw">Draw it</button>
-              <button type="button" id="spin" class="ghost">Turn the phase</button>
-              <button type="button" id="listen" class="ghost" aria-pressed="false">Listen</button>
+              <button type="button" id="spin" class="ghost">
+                Turn the phase
+              </button>
+              <button
+                type="button"
+                id="listen"
+                class="ghost"
+                aria-pressed="false"
+              >
+                Listen
+              </button>
             </div>
             <div class="ctl" style="margin-top: 12px">
               <label for="tone">Base tone</label
@@ -189,12 +200,12 @@
           <div class="panel">
             <h3>Seeing consonance</h3>
             <p class="note">
-              When two pendulums swing in a simple ratio, like 2:3 for a
-              fifth, the pen comes back to where it started after a few
-              swings and the figure closes on itself. The simpler the ratio,
-              the simpler the figure, just as the simplest ratios sound the
-              most consonant. Detune one pendulum slightly and the figure
-              slowly turns, the way two nearly matched notes beat.
+              When two pendulums swing in a simple ratio, like 2:3 for a fifth,
+              the pen comes back to where it started after a few swings and the
+              figure closes on itself. The simpler the ratio, the simpler the
+              figure, just as the simplest ratios sound the most consonant.
+              Detune one pendulum slightly and the figure slowly turns, the way
+              two nearly matched notes beat.
             </p>
           </div>
         </div>
@@ -203,10 +214,10 @@
             <h3>Lissajous and harmonograph</h3>
             <p class="note">
               A Lissajous figure is the ideal case: pendulums that never slow
-              down, so the pen runs around the same closed curve forever. A
-              real harmonograph's pendulums lose energy, so the figure spirals
-              in toward the center. A third, rotary pendulum moving the paper
-              in a circle adds the loops and rosettes.
+              down, so the pen runs around the same closed curve forever. A real
+              harmonograph's pendulums lose energy, so the figure spirals in
+              toward the center. A third, rotary pendulum moving the paper in a
+              circle adds the loops and rosettes.
             </p>
           </div>
         </div>
@@ -216,7 +227,9 @@
         <p><a href="about.html">About harmonographs</a></p>
         <p>
           The code of this page is
-          <a href="https://github.com/evoluteur/harmonograph">Open source</a>
+          <a href="https://github.com/evoluteur/harmonograph-maker"
+            >Open source</a
+          >
           with MIT license.
         </p>
         <p>

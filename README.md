@@ -1,10 +1,10 @@
-# Harmonograph
+# Harmonograph Maker
 
 See musical intervals drawn by pendulums. Pick a ratio, from the octave (1:2) and the fifth (2:3) to the whole tone (8:9), set the phase, detune and damping, and watch the pen draw a harmonograph figure or a Lissajous curve. Listen to the two pendulums as two tones, and save the drawing as an SVG or a PNG. No sign-up and no libraries.
 
 - [Draw a harmonograph](https://evoluteur.github.io/harmonograph/)
 
-![Harmonograph](harmonograph.png)
+![Harmonograph Maker](harmonograph.png)
 
 ## What it does
 
@@ -29,7 +29,7 @@ The pages are plain HTML, CSS and JavaScript, with no dependencies and no build 
 - Three color themes (dark, light and blue) are shared with my other projects.
 - Your settings are kept in the browser's local storage.
 
-Harmonograph is open source at [GitHub](https://github.com/evoluteur/harmonograph) with MIT license.
+Harmonograph is open source at [GitHub](https://github.com/evoluteur/harmonograph-maker) with MIT license.
 
 Had fun browsing the app? [Buy me a coffee by becoming a sponsor](https://github.com/sponsors/evoluteur).
 
