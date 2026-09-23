@@ -1,6 +1,6 @@
 {
   "name": "harmonograph-maker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Harmonograph and Lissajous figures: musical intervals drawn by pendulums, with phase, detune, damping and a rotary pendulum, a drawing animation, stereo sound, and SVG or PNG export.",
   "repository": "github:evoluteur/harmonograph-maker",
   "homepage": "https://evoluteur.github.io/harmonograph-maker/",
