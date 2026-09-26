@@ -1,4 +1,4 @@
-const CACHE = "harmonograph-v1";
+const CACHE = "harmonograph-v4";
 const ASSETS = [
   "./",
   "index.html",

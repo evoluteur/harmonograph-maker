@@ -46,3 +46,8 @@ html:has(#omg-theme-css[href*="evol-blue"]) .canvas-box {
     font-size: 1.4rem;
   }
 }
+
+/* the Watch and listen panel sits under the drawing */
+.watch-panel {
+  margin-top: 16px;
+}

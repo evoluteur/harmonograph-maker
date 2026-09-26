@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harmonograph Maker</title>
     <meta
@@ -81,6 +90,28 @@
         <div class="stage">
           <div id="figure-box" class="canvas-box"></div>
           <p class="note" id="ratio-note" aria-live="polite"></p>
+          <div class="panel watch-panel">
+            <h3>Watch and listen</h3>
+            <div class="btns">
+              <button type="button" id="draw">Draw it</button>
+              <button type="button" id="spin" class="ghost">
+                Turn the phase
+              </button>
+              <button
+                type="button"
+                id="listen"
+                class="ghost"
+                aria-pressed="false"
+              >
+                Listen
+              </button>
+            </div>
+            <div class="ctl" style="margin-top: 12px">
+              <label for="tone">Base tone</label
+              ><span class="val" id="tone-val"></span>
+              <input type="range" id="tone" min="110" max="440" step="1" />
+            </div>
+          </div>
         </div>
 
         <div class="side">
@@ -146,29 +177,6 @@
               <button type="button" id="random" class="ghost">
                 Surprise me
               </button>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3>Watch and listen</h3>
-            <div class="btns">
-              <button type="button" id="draw">Draw it</button>
-              <button type="button" id="spin" class="ghost">
-                Turn the phase
-              </button>
-              <button
-                type="button"
-                id="listen"
-                class="ghost"
-                aria-pressed="false"
-              >
-                Listen
-              </button>
-            </div>
-            <div class="ctl" style="margin-top: 12px">
-              <label for="tone">Base tone</label
-              ><span class="val" id="tone-val"></span>
-              <input type="range" id="tone" min="110" max="440" step="1" />
             </div>
           </div>
 
@@ -241,16 +249,22 @@
         <p>
           You may also like
           <a
-            href="https://evoluteur.github.io/music-of-the-spheres/"
+            href="https://evoluteur.github.io/mandala-maker/"
             target="_blank"
             rel="noopener"
-            >Music of the Spheres</a
+            >Mandala Maker</a
           >,
           <a
-            href="https://evoluteur.github.io/cymatics/"
+            href="https://evoluteur.github.io/maze-maker/"
             target="_blank"
             rel="noopener"
-            >Cymatics</a
+            >Maze Maker</a
+          >,
+          <a
+            href="https://evoluteur.github.io/labyrinth-maker/"
+            target="_blank"
+            rel="noopener"
+            >Labyrinth Maker</a
           >, and
           <a
             href="https://evoluteur.github.io/sacred-geometry/"
